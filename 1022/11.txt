@@ -1,0 +1,43 @@
+bash-4.4$ cd ~
+bash-4.4$ mkdir adcom
+bash-4.4$ ls -ld ./adcom/
+drwx------. 1 s240705 g1 0 10月 22 11:56 ./adcom/
+bash-4.4$ mkdir ./adcom/d1
+bash-4.4$ mkdir ./adcom/d2
+bash-4.4$ ls -l ./adcom/
+合計 0
+drwx------. 1 s240705 g1 0 10月 22 11:56 d1
+drwx------. 1 s240705 g1 0 10月 22 11:56 d2
+bash-4.4$ touch ./adcom/f0
+bash-4.4$ ls -ld ./adcom/f0
+-rw-------. 1 s240705 g1 0 10月 22 11:57 ./adcom/f0
+bash-4.4$ cd ./adcom/d1
+bash-4.4$ pwd
+/mnt/home/s240705/adcom/d1
+bash-4.4$ touch f1
+bash-4.4$ ls -ld ./f1
+-rw-------. 1 s240705 g1 0 10月 22 11:57 ./f1
+bash-4.4$ cp ../f0 ./f2
+bash-4.4$ ls -ld ./f2
+-rw-------. 1 s240705 g1 0 10月 22 11:58 ./f2
+bash-4.4$ ls
+f1  f2
+bash-4.4$ mv ./f2 ../d2/
+bash-4.4$ ls
+f1
+bash-4.4$ ls ../d2
+f2
+bash-4.4$ cp ./f1 ../
+bash-4.4$ ls ~/adcom/
+d1  d2	f0  f1
+bash-4.4$ rm f1
+bash-4.4$ ls
+bash-4.4$ cd ../d2
+bash-4.4$ mkdir d2-d1
+bash-4.4$ touch f3
+bash-4.4$ ls -ld d2-d1/
+drwx------. 1 s240705 g1 0 10月 22 12:00 d2-d1/
+bash-4.4$ ls -ld f3
+-rw-------. 1 s240705 g1 0 10月 22 12:00 f3
+bash-4.4$ 
+
