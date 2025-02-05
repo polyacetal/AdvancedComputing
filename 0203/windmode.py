@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 import sys
 
 _, *argv = sys.argv
 
 
-def show(year, month, direction):
+def show(year, month, days, direction):
     max_dir_count = max(direction.values())
     dir_list = [kv[0] for kv in direction.items() if kv[1] == max(direction.values())]
     count = 0
@@ -19,11 +21,11 @@ def show(year, month, direction):
     elif len(str(max_dir_count)) == 2:
         print(f" ", end='')
     print(f"{max_dir_count}回", end='')
-    if round(max_dir_count/(i-1)*100, 2) < 10:
+    if round(max_dir_count/days*100, 2) < 10:
         print(f"(  ", end='')
     else:
         print(f"( ", end='')
-    print(f"{round(max_dir_count/(i-1)*100,2)}%) ", end='')
+    print(f"{round(max_dir_count/days*100,2)}%) ", end='')
     for direction in dir_list:
         if count != 0:
             print("・", end='')
@@ -31,13 +33,13 @@ def show(year, month, direction):
         count += 1
     print('')
 
-for target_file in argv:
+def main(target_file):
     year = []
     month = []
     direction={"北":0, "北北東":0, "北東":0, "東北東":0, "東":0, "東南東":0, "南東":0, "南南東":0, "南":0, "南南西":0, "南西":0, "西南西":0, "西":0, "西北西":0, "北西":0, "北北西":0}
     i = 0
 
-    with open(target_file) as f:
+    with open(target_file, 'r') as f:
         while True:
             line = f.readline()
             field = line.rstrip('\n').split(",")
@@ -49,4 +51,8 @@ for target_file in argv:
                 month.append(date[1])
                 direction[field[7]] += 1
             i += 1
-        show(list(set(year)), list(set(month)), direction)
+    show(list(set(year)), list(set(month)), i-1, direction)
+
+if __name__ == '__main__':
+    for target_file in argv:
+        main(target_file)
