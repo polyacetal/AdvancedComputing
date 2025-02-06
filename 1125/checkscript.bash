@@ -12,13 +12,14 @@ do
 		echo -n "OK "
 	fi
 	if [ ! -x $filename ]; then
-		chmod +x $filename
+		chmod a+x $filename
 		echo -n "実行を許可しました "
 	fi
 	if ! checkShebang $filename; then
 		echo "#!/usr/bin/bash" | cat - $filename > tmpfile
 		rm $filename
 		mv tmpfile $filename
+		chmod 755 $filename
 		echo -n "シェバンを追加しました "
 	fi
 	echo ""
