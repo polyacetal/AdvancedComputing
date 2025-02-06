@@ -7,10 +7,10 @@ import shutil
 year_pattern = re.compile(r'^(19\d{2}|20\d{2})$')
 month_pattern = re.compile(r'^(\d{2}[A-Za-z]+)\.csv$')
 
-for item in os.listdir(./):
-    item_path = os.path.join(./, item)
+for item in os.listdir("./"):
+    item_path = os.path.join("./", item)
 
-    if year_pattern.match(item) && os.path.isdir(item_path):
+    if year_pattern.match(item) and os.path.isdir(item_path):
         print(f"{item} ... チェック")
         files = os.listdir(item_path)
 
